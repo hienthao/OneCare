@@ -1,62 +1,29 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
+import * as eva from '@eva-design/eva';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
+  ApplicationProvider,
+  Layout,
+  IconRegistry,
   Text,
-  StatusBar,
-} from 'react-native';
+} from '@ui-kitten/components';
+import {EvaIconsPack} from '@ui-kitten/eva-icons';
+import {AppNavigator} from './screens/navigation.component';
+
+import {default as theme} from './theme-cobee.json';
+
 import {TopNewsView} from './components/TopNewsView';
 import {TopCategoriesView} from './components/TopCategoriesView';
 import {TopLookingView} from './components/TopLookingView';
 import {HotEventsView} from './components/HotEventsView';
 import {NavigationView} from './components/NavigationView';
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.containerView}>
-        <View style={styles.topNewsView}>
-          <TopNewsView />
-        </View>
-        <View style={styles.topCategoriesView}>
-          <TopCategoriesView />
-        </View>
-        <View style={styles.topLookingView}>
-          <TopLookingView />
-        </View>
-        <View style={styles.hotEventsView}>
-          <HotEventsView />
-        </View>
-        <View style={styles.navigationView}>
-          <NavigationView />
-        </View>
-      </SafeAreaView>
-    </>
-  );
-};
-
-const backgroundColor = '#fff';
-
-const styles = StyleSheet.create({
-  containerView: {
-    backgroundColor: backgroundColor,
-  },
-  topNewsView: {},
-  topCategoriesView: {},
-  topLookingView: {},
-  hotEventsView: {},
-  navigationView: {},
-});
-
-export default App;
+export default () => (
+  <>
+    <IconRegistry icons={EvaIconsPack} />
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <AppNavigator />
+      </Layout>
+    </ApplicationProvider>
+  </>
+);

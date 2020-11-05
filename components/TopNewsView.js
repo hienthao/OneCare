@@ -10,13 +10,15 @@ import {
 } from 'react-native';
 
 export function TopNewsView({status}) {
-  return <Text>Hello TopNewsView</Text>;
+  return (
+    <View style={styles.container}>
+      <Text>Hello TopLookingViews</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#212639',
-    opacity: 1,
+    height: 200,
   },
 });
