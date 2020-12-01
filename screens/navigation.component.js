@@ -1,45 +1,55 @@
 import React, {useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   BottomNavigation,
   BottomNavigationTab,
-  Layout,
-  Text,
+  Icon,
 } from '@ui-kitten/components';
 import {HomeScreen} from './home.screen';
-import {DetailsScreen} from './search.screen';
+import {NewsScreen} from './news.screen';
+import {CourseScreen} from './course.screen';
+import {NotiScreen} from './notification.screen';
+import {ProfileScreen} from './profile.screen';
+import {NewsDetailScreen} from './NewsDetailScreen';
 
 const Stack = createBottomTabNavigator();
 
-function TestScreen() {
-  return (
-    <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text category="h1">TEST</Text>
-    </Layout>
-  );
-}
+const PersonIcon = (props) => <Icon {...props} name="person-outline" />;
+
+const BellIcon = (props) => <Icon {...props} name="bell-outline" />;
+
+const NewsIcon = (props) => <Icon {...props} name="browser-outline" />;
+
+const CourseIcon = (props) => <Icon {...props} name="browser-outline" />;
+
+const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 
 const BottomTabBar = ({navigation, state}) => (
   <BottomNavigation
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}>
-    <BottomNavigationTab title="Home" />
-    <BottomNavigationTab title="Details" />
+    <BottomNavigationTab title="Trang chủ" icon={HomeIcon} />
+    <BottomNavigationTab title="Tin tức" icon={NewsIcon} />
+    <BottomNavigationTab title="Khóa học" icon={CourseIcon} />
+    <BottomNavigationTab title="Thông báo" icon={BellIcon} />
+    <BottomNavigationTab title="Tài khoản" icon={PersonIcon} />
   </BottomNavigation>
 );
 
 const TabNavigator = () => (
-  <Stack.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
+  <Stack.Navigator
+    initialRouteName="Home"
+    tabBar={(props) => <BottomTabBar {...props} />}>
     <Stack.Screen name="Home" component={HomeScreen} />
-    <Stack.Screen name="Details" component={DetailsScreen} />
+    <Stack.Screen name="News" component={NewsScreen} />
+    <Stack.Screen name="Course" component={CourseScreen} />
+    <Stack.Screen name="Notification" component={NotiScreen} />
+    <Stack.Screen name="Profile" component={ProfileScreen} />
+    <Stack.Screen name="NewsDetail" component={NewsDetailScreen} />
   </Stack.Navigator>
 );
 
 export const AppNavigator = () => {
-  return (
-    <NavigationContainer>
-      <TabNavigator />
-    </NavigationContainer>
-  );
+  return <TabNavigator />;
 };

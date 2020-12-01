@@ -10,15 +10,15 @@ import {
 } from 'react-native';
 
 export function NavigationView({status}) {
-    return (
-        <View style={styles.container}>
-          <Text>Hello TopLookingView</Text>
-        </View>
-      );
-    }
-    
-    const styles = StyleSheet.create({
-      container: {
-        height: 200,
-      },
-    });
+  return (
+    <View style={styles.container}>
+      <Text>Hello NavigationView</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    height: 200,
+  },
+});

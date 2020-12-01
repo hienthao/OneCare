@@ -1,20 +1,48 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {Button, Divider, Layout, TopNavigation, Text} from '@ui-kitten/components';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {
+  Button,
+  Divider,
+  Layout,
+  TopNavigation,
+  TopNavigationAction,
+  Icon,
+  Text,
+} from '@ui-kitten/components';
+
+import {TopNewsView} from '../components/TopNewsView';
+import {TopCategoriesView} from '../components/TopCategoriesView';
+import {TopLookingView} from '../components/TopLookingView';
+import {HotEventsView} from '../components/HotEventsView';
+import {NavigationView} from '../components/NavigationView';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export const HomeScreen = ({navigation}) => {
-  const navigateDetails = () => {
-    navigation.navigate('Details');
-  };
-
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Text>Test</Text>
-      {/* <TopNavigation title="MyApp" alignment="center" />
-      <Divider />
-      <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Button onPress={navigateDetails}>OPEN DETAILS</Button>
-      </Layout> */}
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <TopNewsView style={styles.topNewViews} />
+        <TopCategoriesView
+          navigation={navigation}
+          style={styles.topCategoriesView}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  topNewViews: {
+    height: 300,
+    borderRadius: 40,
+    margin: 10,
+  },
+  topCategoriesView: {
+    height: 300,
+    borderRadius: 40,
+    margin: 10,
+  },
+});
